@@ -26,19 +26,19 @@ The implemented model utilizes K-Nearest Neighbors (KNN) and Random Forest algor
 - Best Number of Estimators for Random Forest: 180
   - Accuracy: 99.61%
 
-## Test Results
+## Test Results (Un-imputed Data)
 
 ### K-Nearest Neighbors (KNN)
 
 #### Graph: Accuracy vs. K
 
-![KNN Accuracy vs. K](img/k_acc.png)
+![KNN Accuracy vs. K](img/k_acc.jpg)
 
 ### Random Forest
 
 #### Graph: Accuracy vs. Number of Estimators
 
-![Random Forest Accuracy vs. Number of Estimators](path/to/random_forest_accuracy_vs_estimators.png)
+![Random Forest Accuracy vs. Number of Estimators](img/rf_acc.jpg)
 
 ## Conclusion
 
