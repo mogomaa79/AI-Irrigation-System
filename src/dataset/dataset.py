@@ -1,17 +1,14 @@
 import pandas as pd
-from sklearn.impute import SimpleImputer
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+
 
 class DataLoader:
     def __init__(self, path, imputer=None):
         self.path = path
-        
         self.imputer = imputer
-        
         self.scaler = StandardScaler()
-
-        self.names = ["Soil Moisture", "Temperature", " Soil Humidity", "Time", 
+        self.names = ["Soil Moisture", "Temperature", " Soil Humidity", "Time",
                       "Air temperature (C)", "Wind speed (Km/h)", "Air humidity (%)",
                       "Wind gust (Km/h)", "Pressure (KPa)", "ph", "rainfall", "N", "P", "K",
                       "status"]
@@ -31,7 +28,7 @@ class DataLoader:
     def prepare_data(self):
         """Divide features and outputs, create train and test subsets, and scale the values"""
         dataset = self.load_data()
-        X = dataset[["Soil Moisture", "Temperature", " Soil Humidity", "Time", 
+        X = dataset[["Soil Moisture", "Temperature", " Soil Humidity", "Time",
                      "Air temperature (C)", "Wind speed (Km/h)", "Air humidity (%)",
                      "Wind gust (Km/h)", "Pressure (KPa)", "ph", "rainfall", "N", "P", "K"]]
 
@@ -41,14 +38,3 @@ class DataLoader:
         X_train_scaled = self.scaler.fit_transform(X_train)
         X_test_scaled = self.scaler.transform(X_test)
         return X_train_scaled, X_test_scaled, y_train, y_test
-
-if __name__ == "__main__":
-    # Create DataLoader instance
-    path = "../../data/raw/TARP.csv"
-    data_loader = DataLoader(path)
-
-    # Load Data With Imputer
-    data = data_loader.load_data()
-    print(data.head())
-    print(data.shape)
-    print(data.describe())

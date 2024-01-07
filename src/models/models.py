@@ -4,6 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from dataset.dataset import DataLoader
 
+
 class KNNModel:
     def __init__(self, path, imputer=None, n_neighbors=84):
         self.data_loader = DataLoader(path, imputer)
@@ -26,9 +27,10 @@ class KNNModel:
         for param, value in self.model.get_params().items():
             print(f"{param}: {value}")
 
-    def save_model(self, model, filename):
+    def save_model(self, filename):
         """Save the trained model."""
-        joblib.dump(model, filename)
+        joblib.dump(self.model, filename)
+
 
 class RandomForestModel:
     def __init__(self, path, imputer=None, n_estimators=290, random_state=42):
@@ -55,4 +57,3 @@ class RandomForestModel:
     def save_model(self, filename):
         """Save the trained model."""
         joblib.dump(self.model, filename)
-
