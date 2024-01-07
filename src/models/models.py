@@ -1,3 +1,5 @@
+"""Models module is used for all models in the system"""
+
 import joblib
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
@@ -6,17 +8,23 @@ from dataset.dataset import DataLoader
 
 
 class KNNModel:
+    """
+    Train the K-Nearest Neighbors classifier and evaluate its accuracy.
+
+    Returns:
+    - float: Accuracy of the trained model.
+    """
     def __init__(self, path, imputer=None, n_neighbors=84):
         self.data_loader = DataLoader(path, imputer)
         self.model = KNeighborsClassifier(n_neighbors=n_neighbors)
 
     def train_model(self):
         """Train a K-Nearest Neighbors classifier and evaluate its accuracy."""
-        X_train, X_test, y_train, y_test = self.data_loader.prepare_data()
+        x_train, x_test, y_train, y_test = self.data_loader.prepare_data()
 
-        self.model.fit(X_train, y_train)
+        self.model.fit(x_train, y_train)
 
-        y_pred = self.model.predict(X_test)
+        y_pred = self.model.predict(x_test)
         accuracy = accuracy_score(y_test, y_pred)
 
         return accuracy
@@ -33,17 +41,20 @@ class KNNModel:
 
 
 class RandomForestModel:
+    """
+    RandomForestModel class for training and evaluating a Random Forest classifier.
+    """
     def __init__(self, path, imputer=None, n_estimators=290, random_state=42):
         self.data_loader = DataLoader(path, imputer)
         self.model = RandomForestClassifier(n_estimators=n_estimators, random_state=random_state)
 
     def train_model(self):
         """Train a Random Forest classifier and evaluate its accuracy."""
-        X_train, X_test, y_train, y_test = self.data_loader.prepare_data()
+        x_train, x_test, y_train, y_test = self.data_loader.prepare_data()
 
-        self.model.fit(X_train, y_train)
+        self.model.fit(x_train, y_train)
 
-        y_pred = self.model.predict(X_test)
+        y_pred = self.model.predict(x_test)
         accuracy = accuracy_score(y_test, y_pred)
 
         return accuracy
