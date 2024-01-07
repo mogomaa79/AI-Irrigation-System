@@ -1,3 +1,5 @@
+[![Tests](https://github.com/mogomaa79/AI-Irrigation-System/actions/workflows/tests.yml/badge.svg)](https://github.com/mogomaa79/AI-Irrigation-System/actions)
+
 # Smart Agriculture: Predicting Water Levels for Smart Irrigation
 
 ## Introduction
