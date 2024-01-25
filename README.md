@@ -38,7 +38,7 @@ The model's performance showed promising results with increasing dataset size, i
 
 ### XGBoost
 
-The introduction of the XGBoost model yielded a notable accuracy of 95.03%, contributing to the overall effectiveness of the Smart Irrigation System.
+The introduction of the XGBoost model yielded a notable accuracy of 95.00%, contributing to the overall effectiveness of the Smart Irrigation System.
 
 ## Conclusion
 
