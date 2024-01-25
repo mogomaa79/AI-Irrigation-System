@@ -8,27 +8,21 @@ This research paper focuses on implementing a Smart Irrigation System to control
 
 ## Model Overview
 
-The implemented model utilizes K-Nearest Neighbors (KNN) and Random Forest algorithms to predict water levels based on IoT sensor data received from Raspberry Pi.
+The implemented model utilizes K-Nearest Neighbors (KNN) and Random Forest algorithms to predict water levels based on IoT sensor data received from Raspberry Pi. Additionally, a third model, XGBoost, was introduced, achieving a promising accuracy of 95.00%.
 
 ### Model Performance
 
-#### With Un-imputed Data (2200 Rows)
+#### With (2200 Rows)
 
-- Best K for KNN: 84
-  - Accuracy: 75.68%
+- KNN Accuracy: 75.68% (K = 84)
+- Random Forest Accuracy: 90.23% (n_estimators = 290)
+- XGBoost: 95.00%
 
-- Best Number of Estimators for Random Forest: 290
-  - Accuracy: 90.23%
+#### Increasing Dataset Size
 
-#### With Imputed Data (100000 Rows)
+The model's performance showed promising results with increasing dataset size, indicating its scalability and potential for accurate predictions.
 
-- Best K for KNN: 20
-  - Accuracy: 90.98%
-
-- Best Number of Estimators for Random Forest: 180
-  - Accuracy: 99.61%
-
-## Test Results (Un-imputed Data)
+## Test Results
 
 ### K-Nearest Neighbors (KNN)
 
@@ -42,6 +36,10 @@ The implemented model utilizes K-Nearest Neighbors (KNN) and Random Forest algor
 
 ![Random Forest Accuracy vs. Number of Estimators](img/rf_acc.jpg)
 
+### XGBoost
+
+The introduction of the XGBoost model yielded a notable accuracy of 95.03%, contributing to the overall effectiveness of the Smart Irrigation System.
+
 ## Conclusion
 
-In conclusion, the results demonstrate the effectiveness of the implemented Smart Irrigation System. The imputed data significantly improves the accuracy of predictions, reaching up to 99.61% with the Random Forest algorithm.
+In conclusion, the results demonstrate the effectiveness of the implemented Smart Irrigation System. The model's scalability with increasing dataset size and the introduction of XGBoost highlight its potential for accurate water level predictions.
