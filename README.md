@@ -8,15 +8,15 @@ This research paper focuses on implementing a Smart Irrigation System to control
 
 ## Model Overview
 
-The implemented model utilizes K-Nearest Neighbors (KNN) and Random Forest algorithms to predict water levels based on IoT sensor data received from Raspberry Pi. Additionally, a third model, XGBoost, was introduced, achieving a promising accuracy of 95.00%.
+The implemented model utilizes K-Nearest Neighbors (KNN) and Random Forest algorithms to predict water levels based on IoT sensor data received from Raspberry Pi. Additionally, a third model, XGBoost, was introduced, achieving a promising accuracy of 97.27%.
 
 ### Model Performance
 
 #### With (2200 Rows)
 
-- KNN Accuracy: 75.68% (K = 84)
+- KNN Accuracy: 77.95% (K = 84)
 - Random Forest Accuracy: 90.23% (n_estimators = 290)
-- XGBoost: 95.00%
+- XGBoost: 97.27%
 
 #### Increasing Dataset Size
 
@@ -38,7 +38,7 @@ The model's performance showed promising results with increasing dataset size, i
 
 ### XGBoost
 
-The introduction of the XGBoost model yielded a notable accuracy of 95.00%, contributing to the overall effectiveness of the Smart Irrigation System.
+The introduction of the XGBoost model yielded a notable accuracy of 97.27%, contributing to the overall effectiveness of the Smart Irrigation System.
 
 ## Conclusion
 

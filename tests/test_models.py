@@ -1,6 +1,6 @@
 """Test the models module."""
 
-from models.models import KNNModel, RandomForestModel, XGBoostModel
+from siri.models import KNNModel, RandomForestModel, XGBoostModel
 
 PATH = "data/raw/TARP.csv"
 

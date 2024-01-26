@@ -5,7 +5,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 from xgboost import XGBClassifier
-from dataset.dataset import DataLoader
+from siri.dataset import DataLoader
 
 
 class Model:
@@ -50,7 +50,7 @@ class KNNModel(Model):
     """
     def __init__(self, path, imputer=None, n_neighbors=84):
         super().__init__(path, imputer)
-        self.model = KNeighborsClassifier(n_neighbors=n_neighbors)
+        self.model = KNeighborsClassifier(n_neighbors=n_neighbors, weights='distance', p=1)
 
 
 class RandomForestModel(Model):
@@ -68,4 +68,4 @@ class XGBoostModel(Model):
     """
     def __init__(self, path, imputer=None):
         super().__init__(path, imputer)
-        self.model = XGBClassifier()
+        self.model = XGBClassifier(alpha=0.005, reg_lambda=0.001, colsample_bytree=0.8, gamma=0.1)
