@@ -8,7 +8,7 @@ from xgboost import XGBClassifier
 from siri.dataset import DataLoader
 
 
-class Model:
+class Model():
     """
     Generic model class for training and evaluating a classifier model.
     """
@@ -43,29 +43,56 @@ class Model:
         """Save the trained model."""
         joblib.dump(self.model, filename)
 
+    def predict(self, data):
+        """Predict the class of the given data."""
+        if self.model is None:
+            raise NotImplementedError("Model not implemented.")
+        return self.model.predict(data)
+
 
 class KNNModel(Model):
     """
     KNNModel class for training and evaluating a K-Nearest Neighbors classifier.
     """
-    def __init__(self, path, imputer=None, n_neighbors=84):
+    def __init__(self, path, imputer=None, **kwargs):
         super().__init__(path, imputer)
-        self.model = KNeighborsClassifier(n_neighbors=n_neighbors, weights='distance', p=1)
+        self.model = KNeighborsClassifier(**kwargs)
 
 
 class RandomForestModel(Model):
     """
     RandomForestModel class for training and evaluating a Random Forest classifier.
     """
-    def __init__(self, path, imputer=None, n_estimators=290, random_state=42):
+    def __init__(self, path, imputer=None, **kwargs):
         super().__init__(path, imputer)
-        self.model = RandomForestClassifier(n_estimators=n_estimators, random_state=random_state)
+        self.model = RandomForestClassifier(**kwargs)
 
 
 class XGBoostModel(Model):
     """
     XGBoostModel class for training and evaluating a XGBoost classifier.
     """
-    def __init__(self, path, imputer=None):
+    def __init__(self, path, imputer=None, **kwargs):
         super().__init__(path, imputer)
-        self.model = XGBClassifier(alpha=0.005, reg_lambda=0.001, colsample_bytree=0.8, gamma=0.1)
+        self.model = XGBClassifier(**kwargs)
+
+
+class Factory:
+    """
+    Factory class for creating a model.
+    """
+    @staticmethod
+    def create_model(model_name, path, imputer=None, **kwargs):
+        """Create a model."""
+        if model_name == 'knn':
+            return KNNModel(path, imputer, **kwargs)
+        if model_name == 'random_forest':
+            return RandomForestModel(path, imputer, **kwargs)
+        if model_name == 'xgboost':
+            return XGBoostModel(path, imputer, **kwargs)
+        raise NotImplementedError(f"{model_name} model not implemented.")
+
+    @staticmethod
+    def create_model_from_file(filename):
+        """Create a model from a file."""
+        return joblib.load(filename)
